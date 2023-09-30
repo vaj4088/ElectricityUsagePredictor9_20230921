@@ -1155,8 +1155,28 @@ execute the FutureTask...  Eric Lindauer Nov 20 '12 at 6:08
 
 	    browser = browserType.launch(lo);
 	    page = browser.newPage();
-	    page.navigate(GET_URL);
+	    //
+	    //  The method page.navigate(GET_URL) will throw an error if:
+	    //
+	    // there's an SSL error (e.g. in case of self-signed certificates).
+	    // target URL is invalid.
+	    // the timeout is exceeded during navigation.    <<<----------------
+	    // the remote server does not respond or is unreachable.
+	    // the main resource failed to load.
+	    //
+	    // ... so try to catch the timeout error and try again.
+	    //
 
+	    boolean tryAgain = true ;
+	    while (tryAgain) {
+		try {
+		    page.navigate(GET_URL);
+		    tryAgain = false ; // Can't get here if exception is thrown.
+		} catch (com.microsoft.playwright.TimeoutError e) {
+		    e.printStackTrace();
+		} 
+	    }
+	    
 	    if (DEBUG_SHOW_MESSAGES) {
 		System.out.println("Went to the login page.");
 		System.out.println("Title is " + page.title() + ".");
