@@ -45,6 +45,10 @@ import com.microsoft.playwright.options.AriaRole;
  */
 
 /*
+ * Playwright javadocs are at
+ * https://javadoc.io/doc/com.microsoft.playwright/playwright/1.18.0/index.html
+ * 
+ * 
  * Eliminate error messages when using Playwright:
  * 
  * Gtk-Message:
@@ -1173,6 +1177,10 @@ execute the FutureTask...  Eric Lindauer Nov 20 '12 at 6:08
 		    page.navigate(GET_URL);
 		    tryAgain = false ; // Can't get here if exception is thrown.
 		} catch (com.microsoft.playwright.TimeoutError e) {
+		    if (DEBUG_SHOW_MESSAGES) {
+			System.out.print("Timed out going to the login page,") ;
+			System.out.println(" trying again.") ;
+		    }
 		    e.printStackTrace();
 		} 
 	    }
