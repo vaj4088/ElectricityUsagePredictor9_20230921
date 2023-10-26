@@ -93,7 +93,8 @@ SmartMeterTexasDataInterface
     private static final int DATA_RETRY_MILLIS = 1000 ;
     private static final String SEARCH_FOR = "(Kwh)" ;
     private static final String TITLE = "Dashboard" ;
-    private static final String GET_URL = "http://smartmetertexas.com" ;
+//    private static final String GET_URL = "http://smartmetertexas.com" ;
+    private static final String GET_URL = "http://www.smartmetertexas.com" ;
     private static final String NO_DATA = "No data available " +
 	    "for the date range you requested." ;
     private final static String EMPTY = "" ;
