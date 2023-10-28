@@ -23,5 +23,6 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
-/FeedbackerImplementation_log_20231026171005.html
-/FeedbackerImplementation_log_20231026171104.html
+# Application logs
+*.html
+
